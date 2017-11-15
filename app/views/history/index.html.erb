@@ -22,7 +22,7 @@
 
 
 <%if user_signed_in? %>
-  <%if !current_user.is_user%>
+  <%if !current_user.guest?%>
     <div class="container-fluid">
       <!-- <h1>History Page</h1>     --> 
       <p> </p>
@@ -61,10 +61,12 @@
 
       </div>
     <%end%>
-    <%else%>
-    Register.
-    <%end%>
+  <%elsif current_user.guest?%>
+    You have to be a registered member of Healthway to see your shopping history.
+  <%else%>
+    You done fucked up, son.
+  <%end%>
 
 <% else %>
-You need to be a registered member to use our history.
+Log in to see your history.
 <%end%>
